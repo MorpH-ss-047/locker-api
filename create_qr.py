@@ -65,16 +65,19 @@ def get_qr_url(pk):
     try:
         _, policy_name = create_policy(pk, config.POLICY_JSON)
     except Exception as e:
-        return f"Something went wrong during policy creation {e}", 403
+        return False
+        # return f"Something went wrong during policy creation {e}", 403
     try:
         enrollment_token = get_enrollment_token(config.ENTERPRISE_NAME, policy_name)
     except Exception as e:
-        return f"Something went wrong during enrollment token creation {e}", 403
+        return False
+        # return f"Something went wrong during enrollment token creation {e}", 403
     try:
         qr_code_url = get_qr_code(enrollment_token)
         return qr_code_url
     except Exception as e:
-        return f"Something went wrong during qr code creation {e}", 403
+        return False
+        # return f"Something went wrong during qr code creation {e}", 403
 
 
 def update_policy(pk, new_policy_json):
@@ -82,16 +85,20 @@ def update_policy(pk, new_policy_json):
 
     policy = get_policy(pk)
     new_policy = new_policy_json
-
-
+    
     if("lockdownDevice" in new_policy.keys()):
-
+      
         for i, app2 in enumerate(policy["applications"]):
             if app2["packageName"] == "com.apptimates.apptimatelocker":
-                policy["applications"][i]['installType'] = 'KIOSK' if new_policy['lockdownDevice'] else 'REQUIRED_FOR_SETUP'
+                policy["applications"][i]['installType'] = 'KIOSK' if new_policy['lockdownDevice'] else 'FORCE_INSTALLED'
                 updated_policy_dict = policy
                 break
         updated_policy_dict['screenCaptureDisabled'] = new_policy['lockdownDevice'] 
+        updated_policy_dict["usbFileTransferDisabled"] = new_policy['lockdownDevice'] 
+        updated_policy_dict["bluetoothConfigDisabled"] = new_policy['lockdownDevice'] 
+        updated_policy_dict["outgoingBeamDisabled"] = new_policy['lockdownDevice'] 
+        updated_policy_dict["cameraDisabled"] = new_policy['lockdownDevice'] 
+
             
     else:
 
@@ -108,6 +115,50 @@ def update_policy(pk, new_policy_json):
     )
 
     return updated_policy
+
+
+def release_device(pk):
+    policy_name = config.BASE_POLICY_NAME + pk
+
+    policy = get_policy(pk)
+   
+    for i, app2 in enumerate(policy["applications"]):
+        if app2["packageName"] == "com.apptimates.apptimatelocker":
+            policy["applications"][i]['installType'] = 'BLOCKED' 
+            updated_policy_dict = policy
+            break
+    updated_policy_dict['factoryResetDisabled'] = False
+    updated_policy_dict['screenCaptureDisabled'] = False
+    updated_policy_dict["usbFileTransferDisabled"] = False
+    updated_policy_dict["bluetoothConfigDisabled"] = False
+    updated_policy_dict["outgoingBeamDisabled"] = False
+    updated_policy_dict["cameraDisabled"] = False
+
+    updated_policy = (
+        androidmanagement.enterprises()
+        .policies()
+        .patch(
+            name=policy_name,
+            body=updated_policy_dict,
+        )
+        .execute()
+    )
+    print (updated_policy)
+
+    #check if the policy was updated successfully
+    keys = updated_policy.keys()
+    return (
+        # (if ("factoryResetDisabled") in keys updated_policy['factoryResetDisabled'] == False else False )and
+        # updated_policy['screenCaptureDisabled'] == False and
+        # updated_policy["usbFileTransferDisabled"] == False and
+        # updated_policy["bluetoothConfigDisabled"] == False and
+        # updated_policy["outgoingBeamDisabled"] == False and
+        # updated_policy["cameraDisabled"] == False 
+        all([policy["applications"][i]['installType'] == 'BLOCKED' for i, app2 in enumerate(policy["applications"]) if app2["packageName"] == "com.apptimates.apptimatelocker"])
+            
+    )
+        
+    # return updated_policy
 
 
 if __name__ == "__main__":

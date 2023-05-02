@@ -11,7 +11,7 @@ POLICY_JSON = """
       "packageName": "com.apptimates.apptimatelocker",
       "installType": "REQUIRED_FOR_SETUP",
       "lockTaskAllowed": "true",
-      "delegatedScopes": [ 
+      "delegatedScopes": [
           "ENABLE_SYSTEM_APP"
         ],
       "permissionGrants": [
@@ -47,8 +47,7 @@ POLICY_JSON = """
      "developerSettings": "DEVELOPER_SETTINGS_DISABLED"
   },
   "playStoreMode": "BLACKLIST",
-  "usbFileTransferDisabled": "true",
-  
+  "usbFileTransferDisabled": "false",
   "factoryResetDisabled" : "true"
 }
 """
