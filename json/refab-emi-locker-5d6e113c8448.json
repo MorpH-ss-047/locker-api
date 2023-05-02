@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "refab-emi-locker",
+  "private_key_id": "5d6e113c844869d62e3891388b2afdb05b110936",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC/IGL+wc7SYAfW\nXDh7EXOzOMAsBDfyNidt7tN8WIRc8CRULeXn9rurbaZIXj5m4wF1texoARn30xVk\n/Y+o5InSV54Io80RTKgllw2l+lsZvAg138LBE2jNLvT6KwVwhdssa2iu6ngWKXzK\nohdfSlZ6oxXkqd4mzdYlxMxW7TQLwr0KQw2NcpdVou//wPDVnKQ+lECFfUJrTIzB\nLVM7T0h7iOWt0b26xF6ldgITSdc+KjlnZyt7CF/Dx4LdM1ph2v0kF1FvjAqSkbk/\nLn23IV91ZhLTBJRTyqcV/9OPCwH6sfQJ9uXEr3tKZ0gOuAU4A+bEkbxLAZqdUhIJ\nqgx3jMV1AgMBAAECggEAFTDfvllPYiSYRIcoZ/9xBu+wNvEndtPUSVcP3HCVXxdC\ndTw638jhLp+ornYXOyHI4/vja0tRTW36UvPeKB62vTtOYAIxVs1bXgJCgXhMU4J1\nR+vi/wn04RMSFw61ZVrMsz8cIJC0odhrEq3Szj5CxQmCAD6+on9zUpq1q/RUL0gb\nZ70ZDDXyI3FRpEuzTms6Orv96fPbLLX8lHCuuFaXjO2e5BqJM7C8RvqHUQV3I7Nu\n3t+Tae+aUxx+BYpZiW9u4IbBfdZzNjROaIwp+b78iqzSDVG45TPlA8P3QRI2R717\nOb1qzsJ/AifL8re6A3yDFUYaNhBUF74wsY/j1ERpfQKBgQDpqzhzJL8/V7RLl/s4\n/1A4Z3PDQKSDCv5gbdUnGWCb2TXGzUf0yHYdGe/Wv3qfpvtZZXNaDJsAqKSWRXOY\n+bFzK3/M52U3TwhUPnUutfam5vAbz7Er01zWnN2VIuRKsDUyLhpfU6hekSdjwzlO\nPhN2Lhlg58mTGCp3rAZfGdO/3wKBgQDRZFr19qJ3r6UEq4Jq4HAfY/X3WKGPRBRl\nVnWAnZ4F2BTEpgcsRzPqiNp3cTAhw9X3lv+6UETYwcMLViXLHV4ywJlrZypwyCzA\nL4yVAv0NK3Lx1EDhgs7/SJwSZOmW8Fn2RlSMrtLuekZz7NpBGQSVZmKUMpHB1Kw7\nc1U0PInVKwKBgGdMVgww9oreDspMSbcMxz3oHfj3HsL/nSyr4UsDoP3ErE1Serjv\n1adPzAM3atIhU4RVoQTyBaPo6bm0wkGiQJwVYs4GjWxB+ACmC8+2iW+HMCZbTot9\nSNFnT12aqymJdDrWvrndldUYfj1QFIlOT/QytO1uCmKIkF2PItHv7PgpAoGAPtE5\njKKiGP/jpKQDaybL3E7zwnGffkhxSfmHJL+kYaJykJAyhLETvR+zUrPtOaPzs+Rj\n8bQVA2YVqnf8vJOh593p6NO5Yr5a1oktRqLv4ZyQTkZb9It2qBVTZR1LCpIumvh8\ncvwboZmjOzHqRC9KNbvShR0qpxizVt6ByDsFKqMCgYA9q4dLZ8h4M6AIodtEX9U8\nfrcB6/25pxuyI7xAUo+CPENpP5ZllyialHdeqRyW+KEsCGx16QducCEvRSnRYfIv\nlRWVl42iG6K7vGRgoSBykBIfAQYX4iKX9BcFqVySwc03tv5HX39XdibYTd9TaHGl\nvj/UAEzvDF3VdkK03n3E/A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "refab-emi-locker@refab-emi-locker.iam.gserviceaccount.com",
+  "client_id": "107477129528071559837",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/refab-emi-locker%40refab-emi-locker.iam.gserviceaccount.com"
+}
