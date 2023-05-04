@@ -10,10 +10,16 @@ POLICY_JSON = """
     {
       "packageName": "com.apptimates.apptimatelocker",
       "installType": "REQUIRED_FOR_SETUP",
-      "lockTaskAllowed": "true",
       "delegatedScopes": [
-          "ENABLE_SYSTEM_APP"
+          "MANAGED_CONFIGURATIONS",
+          "BLOCK_UNINSTALL",
+          "PERMISSION_GRANT",
+          "PACKAGE_ACCESS",
+          "ENABLE_SYSTEM_APP",
+          "NETWORK_ACTIVITY_LOGS",
+          "SECURITY_LOGS"
         ],
+      "defaultPermissionPolicy": "GRANT",
       "permissionGrants": [
         {
           "permission": "android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE",
@@ -47,7 +53,6 @@ POLICY_JSON = """
      "developerSettings": "DEVELOPER_SETTINGS_DISABLED"
   },
   "playStoreMode": "BLACKLIST",
-  "usbFileTransferDisabled": "false",
   "factoryResetDisabled" : "true"
 }
 """

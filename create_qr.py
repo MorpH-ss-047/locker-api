@@ -90,6 +90,7 @@ def update_policy(pk, new_policy_json):
       
         for i, app2 in enumerate(policy["applications"]):
             if app2["packageName"] == "com.apptimates.apptimatelocker":
+                print("found app", app2)
                 policy["applications"][i]['installType'] = 'KIOSK' if new_policy['lockdownDevice'] else 'FORCE_INSTALLED'
                 updated_policy_dict = policy
                 break
