@@ -1,10 +1,29 @@
 from flask import Flask, request, jsonify
 import json
 import create_qr as cq
-
-
+from waitress import serve
+import pyaes
 app = Flask(__name__)
 
+
+plaintext = b'secret data'
+key=b'1234567890123456'
+aes = pyaes.AESModeOfOperationCTR(key)    
+ciphertext = aes.encrypt(plaintext)
+
+# show the encrypted data
+print (ciphertext)
+
+# DECRYPTION
+# CRT mode decryption requires a new instance be created
+aes = pyaes.AESModeOfOperationCTR(key)
+
+# decrypted data is always binary, need to decode to plaintext
+decrypted = aes.decrypt(ciphertext).decode('utf-8')
+
+# True
+print (decrypted == plaintext)
+print (plaintext)
 
 @app.route("/api/v1/get_qr", methods=["GET", "POST"])
 def get_qr():
@@ -55,7 +74,7 @@ def update_policy():
         data = request.args
         # print(request.json)
         body=request.get_json()
-        # print(body)
+        print(body)
         if(not body):
             obj={"error":1,"message":"BODY IS EMPTY","status":500}
             return jsonify(obj), 500
@@ -116,4 +135,5 @@ def say_hi():
 
 
 if __name__ == "__main__":
-    app.run(threaded=True,debug=True, host="0.0.0.0", port=5001)
+    serve(app,host="0.0.0.0", port=5001,threads=4)
+    # app.run(threaded=True,debug=False, host="0.0.0.0", port=5001)
