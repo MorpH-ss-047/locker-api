@@ -3,7 +3,7 @@ from google.oauth2 import service_account
 from urllib.parse import urlencode
 import requests
 import json
-
+import pyaes
 import config
 
 
@@ -159,6 +159,16 @@ def release_device(pk):
     )
         
     # return updated_policy
+
+def checkAuthentication(payload,encrypted):
+    if encrypted:
+        aes = pyaes.AESModeOfOperationCTR(key)
+
+    # decrypted data is always binary, need to decode to plaintext
+        decrypted = aes.decrypt(encrypted).decode('utf-8')
+        return payload == decrypted
+    else:
+        return False
 
 
 if __name__ == "__main__":
